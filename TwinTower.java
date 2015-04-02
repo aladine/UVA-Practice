@@ -25,7 +25,13 @@ public class TwinTower {
         }
     }
 
-    private static boolean calc(int n, int k, int[] tower1, int[] tower2) {
-        return false;
+    private static int calc(int n, int k, int[] tower1, int[] tower2) {
+        // find the longest string between tower1 and tower2
+        if(n==0 || k==0) return 0;
+        if(tower1[n-1] == tower2[k -1]){
+            return calc(n-1, k-1, tower1, tower2)+1;
+        }else {
+            return Math.max( calc(n-1, k, tower1, tower2), calc(n, k-1, tower1, tower2));
+        }
     }
 }
